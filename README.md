@@ -29,7 +29,7 @@ yourdomain:3030
 
 ### Notes
 * env.ini file usually will not be committed
-*InitController is not a part of the application and only works as a helper to prepare the database.
+* InitController is not a part of the application and only works as a helper to prepare the database.
 
 ## License
 
