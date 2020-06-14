@@ -1,0 +1,25 @@
+version: '3'
+services:
+    mysql:
+        restart: always
+        image: 'mysql:8.0.20'
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_ROOT_PASSWORD: example
+    nginx:
+        restart: always
+        build:
+            context: ./nginx
+            dockerfile: Dockerfile.dev
+        ports:
+            - '3030:80'
+    backend:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile-phalcon.dev
+        volumes:
+            #- ./backend/debian/sources.list:/etc/apt/sources.list
+            - ./backend:/var/www
+            #- ./backend/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+        ports:
+            - '9000:9000'

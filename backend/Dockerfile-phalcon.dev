@@ -1,0 +1,14 @@
+FROM mileschou/phalcon:7.4-fpm
+
+RUN docker-php-ext-install pdo_mysql
+
+# Set working directory
+WORKDIR /var/www
+
+# Copy existing application directory contents
+COPY . /var/www
+
+# Expose port 9000 and start php-fpm server
+EXPOSE 9000
+
+CMD ["php-fpm"]
